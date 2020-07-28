@@ -1,0 +1,45 @@
+version: '3.3'
+
+services:
+  # App config
+  demo-springboot-docker-jenkins-app-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    expose:
+      - "5593"
+    ports:
+      - "8080:5593"
+    restart: always
+    depends_on:
+      - db # This service depends on mysql. Start that first.
+    environment: # Pass environment variables to the service
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/demo-springboot-docker-jenkins?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
+      SPRING_DATASOURCE_USERNAME: demo-myapp
+      SPRING_DATASOURCE_PASSWORD: 123456789
+    networks:
+      - demo-springboot-docker-jenkins-network
+
+  # Database Service (Mysql)
+  db:
+    image: mysql:5.7
+    ports:
+      - "3306:3307"
+    restart: always #Always restart when error or stop
+    environment:
+      MYSQL_DATABASE: demo-springboot-docker-jenkins
+      MYSQL_USER: demo-myapp
+      MYSQL_PASSWORD: 123456789
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - demo-springboot-docker-jenkins-network
+
+# Volumes
+volumes:
+  db-data:
+
+# Networks to be created to facilitate communication between containers
+networks:
+  demo-springboot-docker-jenkins-network:
