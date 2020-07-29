@@ -13,6 +13,11 @@ pipeline {
                 //
             }
         }
+        state("Docker build"){
+            steps {
+                sh "docker-compose up"
+            }
+        }
         stage('Deploy') {
             steps {
                 //
