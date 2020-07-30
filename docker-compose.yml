@@ -1,4 +1,4 @@
-ưversion: '3.3'
+version: '3.3'
 
 services:
   # App config
@@ -9,7 +9,7 @@ services:
     expose:
       - "5593"
     ports:
-      - "8080:5593"
+      - "5593:5593"
     restart: always
     depends_on:
       - db # This service depends on mysql. Start that first.
