@@ -1,10 +1,11 @@
 pipeline {
     agent any
     environment {
+        COMPOSE_FILE = "docker-compose.yml"
         PATH = "$PATH:/usr/local/bin"
     }
     stages {
-        stage('docker-compose') {
+        stage('Docker Compose') {
             steps {
                 sh "docker-compose build"
                 sh "docker-compose up -d"
