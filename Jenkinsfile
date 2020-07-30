@@ -1,14 +1,12 @@
 pipeline {
     agent any
     stages {
-
         state('Docker build'){
              steps {
                    sh "docker-compose build"
                    sh "docker-compose up -d"
                 }
         }
-
         stage('Build') {
             steps {
                          git 'https://github.com/bac-ta/demo-springboot-docker-jenkins.git'
@@ -18,13 +16,11 @@ pipeline {
 
             }
          }
-
         stage('Test') {
              steps {
 
              }
         }
-
         stage('Deploy') {
             steps {
                 //
