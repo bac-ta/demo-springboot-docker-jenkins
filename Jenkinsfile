@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        state('Docker build'){
+        state('Docker build') {
              steps {
                    sh "docker-compose build"
                    sh "docker-compose up -d"
@@ -16,10 +16,10 @@ pipeline {
 
             }
          }
-        post {
-              always {
-                 sh "docker-compose down || true"
-              }
-        }
+    }
+    post {
+                  always {
+                     sh "docker-compose down || true"
+                  }
     }
 }
