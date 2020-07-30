@@ -1,9 +1,6 @@
 pipeline {
     agent any
     stages {
-        when {
-            branch 'master'
-         }
 
         state("Docker build"){
              steps {
