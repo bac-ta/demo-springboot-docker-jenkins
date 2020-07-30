@@ -16,16 +16,6 @@ pipeline {
 
             }
          }
-        stage('Test') {
-             steps {
-
-             }
-        }
-        stage('Deploy') {
-            steps {
-                //
-            }
-        }
         post {
               always {
                  sh "docker-compose down || true"
