@@ -6,7 +6,6 @@ pipeline {
     }
     tools {
         maven 'MAVEN_HOME'
-        docker 'DOCKER_HOME'
     }
     stages {
         stage('Docker Compose') {
