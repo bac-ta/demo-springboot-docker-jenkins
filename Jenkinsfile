@@ -17,8 +17,14 @@ pipeline {
         stage('Build') {
             steps {
                 git 'https://github.com/bac-ta/demo-springboot-docker-jenkins.git'
-                sh "mvn package install"
+                sh "mvn clean package install"
             }
         }
+    }
+    post {
+            always {
+                // Always cleanup after the build.
+                sh 'docker-compose -f ${env.COMPOSE_FILE} down'
+            }
     }
 }
