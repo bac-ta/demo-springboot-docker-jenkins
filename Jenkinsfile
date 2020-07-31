@@ -6,14 +6,15 @@ pipeline {
     }
     tools {
         maven 'MAVEN_HOME'
+        docker 'DOCKER_HOME'
     }
     stages {
-//         stage('Docker Compose') {
-//             steps {
-//                 sh "docker-compose build"
-//                 sh "docker-compose up -d"
-//             }
-//         }
+        stage('Docker Compose') {
+            steps {
+                sh "docker-compose build"
+                sh "docker-compose up -d"
+            }
+        }
         stage('Build') {
             steps {
                 git 'https://github.com/bac-ta/demo-springboot-docker-jenkins.git'
