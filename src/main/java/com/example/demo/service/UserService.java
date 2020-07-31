@@ -17,7 +17,6 @@ public class UserService {
     public User findUser(int id) {
         return repository.findById(id).get();
     }
-
     public void deleteUser(int id) {
         repository.deleteById(id);
     }
