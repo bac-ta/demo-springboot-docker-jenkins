@@ -17,7 +17,7 @@ pipeline {
         stage('Build') {
             steps {
                 git 'https://github.com/bac-ta/demo-springboot-docker-jenkins.git'
-                sh "mvn -Dmaven.test.failure.ignore=true clean package"
+                sh "mvn package install"
             }
         }
     }
