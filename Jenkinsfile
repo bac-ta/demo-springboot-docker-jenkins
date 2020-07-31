@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'ci-cd' }
+    agent any
     environment {
         COMPOSE_FILE = "docker-compose.yml"
         PATH = "$PATH:/usr/local/bin"
