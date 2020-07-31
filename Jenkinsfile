@@ -10,8 +10,8 @@ pipeline {
     stages {
         stage('Docker Compose') {
             steps {
-                sh "docker-compose -f ${env.COMPOSE_FILE} build"
-                sh "docker-compose up -d"
+                sh "/usr/local/bin/docker-compose -f ${env.COMPOSE_FILE} build"
+                sh "/usr/local/bin/docker-compose up -d"
             }
         }
         stage('Build') {
