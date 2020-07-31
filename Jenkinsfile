@@ -4,13 +4,16 @@ pipeline {
         COMPOSE_FILE = "docker-compose.yml"
         PATH = "$PATH:/usr/local/bin"
     }
+    tools {
+        maven 'MAVEN_HOME'
+    }
     stages {
-        stage('Docker Compose') {
-            steps {
-                sh "docker-compose build"
-                sh "docker-compose up -d"
-            }
-        }
+//         stage('Docker Compose') {
+//             steps {
+//                 sh "docker-compose build"
+//                 sh "docker-compose up -d"
+//             }
+//         }
         stage('Build') {
             steps {
                 git 'https://github.com/bac-ta/demo-springboot-docker-jenkins.git'
