@@ -2,7 +2,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://mysqldb:3307/demo-springboot-docker-jenkins?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    url: jdbc:mysql://mysqldb:3307/demo-springboot-docker-jenkins?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true
     username: demo-myapp
     password: Demo123456789
     platform: mysql
@@ -17,6 +17,3 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-
-server:
-  port: 5555
