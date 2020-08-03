@@ -5,6 +5,8 @@ spring:
     url: jdbc:mysql://mysqldb:3307/demo-springboot-docker-jenkins?useUnicode=true&characterEncoding=UTF-8&useSSL=false
     username: demo-myapp
     password: Demo123456789
+    platform: mysql
+    initialization-mode: always
 
   jpa:
     database: mysql
