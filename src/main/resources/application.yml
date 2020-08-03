@@ -19,4 +19,4 @@ spring:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
 
 server:
-  port: 5593
+  port: 5555
