@@ -1,8 +1,8 @@
 #Config app
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://db:3307/demo-springboot-docker-jenkins?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://mysqldb:3307/demo-springboot-docker-jenkins?useUnicode=true&characterEncoding=UTF-8&useSSL=false
     username: demo-myapp
     password: 123456789
 
