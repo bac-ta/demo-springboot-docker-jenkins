@@ -25,6 +25,8 @@ services:
     image: mysql:8
     ports:
       - "3307:3307"
+    expose:
+      - "3307"
     restart: always #Always restart when error or stop
     environment:
       MYSQL_DATABASE: demo-springboot-docker-jenkins
