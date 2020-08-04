@@ -24,7 +24,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "5593:5593"
+      - "5593:8080"
     restart: always
     depends_on:
       - mysqldb # This service depends on mysql. Start that first.
