@@ -3,7 +3,7 @@ version: '3.3'
 services:
 
   # Database Service (Mysql)
-  mysql_db:
+  mysql_database:
     image: mysql:8
     ports:
       - "3309:3306"
@@ -27,11 +27,11 @@ services:
       - "5593:8080"
     restart: always
     depends_on:
-      - mysql_db # This service depends on mysql. Start that first.
+      - mysql_database # This service depends on mysql. Start that first.
     links:
-      - mysql_db
+      - mysql_database
     environment: # Pass environment variables to the service
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql_db:3309/demo-springboot-docker-jenkins?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql_database:3306/demo-springboot-docker-jenkins?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&allowPublicKeyRetrieval=true
       SPRING_DATASOURCE_USERNAME: demo-myapp
       SPRING_DATASOURCE_PASSWORD: Demo123456789
     networks:

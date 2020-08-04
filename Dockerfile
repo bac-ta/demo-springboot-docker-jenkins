@@ -1,12 +1,15 @@
-#For app
-FROM maven:3.5.2-jdk-8-alpine AS MAVEN_BUILD
-MAINTAINER bac93.it@gmail.com
-COPY pom.xml /build/
-COPY src /build/src/
-WORKDIR /build/
-RUN mvn package
-FROM openjdk:8-jre-alpine
+FROM java:8
+FROM maven:alpine
+
+# image layer
 WORKDIR /app
-COPY --from=MAVEN_BUILD /build/target/demo-0.0.1-SNAPSHOT.jar  /app/demo-springboot-docker-jenkins.jar
-EXPOSE 5593
-ENTRYPOINT ["java","-jar","demo-springboot-docker-jenkins.jar"]
+ADD pom.xml /app
+RUN mvn verify clean --fail-never
+
+# Image layer: with the application
+COPY . /app
+RUN mvn -v
+RUN mvn clean install -DskipTests
+EXPOSE 8080
+ADD ./target/your.jar /developments/
+ENTRYPOINT ["java","-jar","/developments/your.jar"]
