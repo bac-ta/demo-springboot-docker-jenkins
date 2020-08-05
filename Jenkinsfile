@@ -21,10 +21,8 @@ pipeline {
             }
         }
         state("Deploy app") {
-            steps {
-                script {
-                    sh "docker-compose up"
-                }
+            script {
+                sh "docker-compose up"
             }
         }
     }
