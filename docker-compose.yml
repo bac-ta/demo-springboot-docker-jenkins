@@ -7,7 +7,7 @@ services:
     image: mysql:8
     ports:
       - "3309:3306"
-    restart: always #Always restart when error or stop
+    restart: always
     environment:
       MYSQL_DATABASE: demo-springboot-docker-jenkins
       MYSQL_USER: demo-myapp
@@ -25,12 +25,12 @@ services:
       dockerfile: Dockerfile
     ports:
       - "5593:8080"
+    expose:
+      - "5593"
     restart: always
     depends_on:
-      - mysql_database # This service depends on mysql. Start that first.
-    links:
       - mysql_database
-    environment: # Pass environment variables to the service
+    environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql_database:3306/demo-springboot-docker-jenkins?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&allowPublicKeyRetrieval=true
       SPRING_DATASOURCE_USERNAME: demo-myapp
       SPRING_DATASOURCE_PASSWORD: Demo123456789

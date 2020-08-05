@@ -1,3 +1,4 @@
+
 FROM java:8
 FROM maven:alpine
 
@@ -11,5 +12,5 @@ COPY . /app
 RUN mvn -v
 RUN mvn clean install -DskipTests
 EXPOSE 8080
-ADD ./target/your.jar /developments/
-ENTRYPOINT ["java","-jar","/developments/your.jar"]
+ADD ./target/demo-0.0.1-SNAPSHOT.jar /developments/my-app.jar
+ENTRYPOINT ["java","-jar","/developments/my-app.jar"]

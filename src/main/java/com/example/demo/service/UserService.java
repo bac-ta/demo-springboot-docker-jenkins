@@ -21,6 +21,7 @@ public class UserService {
         Optional<User> optionalUser = repository.findById(id);
         if (!optionalUser.isPresent())
             throw new ResourceNotFoundException("User not found");
+        System.out.println("Helo");
         return optionalUser.get();
     }
 

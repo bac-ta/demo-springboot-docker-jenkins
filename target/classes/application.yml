@@ -1,0 +1,21 @@
+#Config app
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://mysql_database:3309/demo-springboot-docker-jenkins?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true
+    username: demo-myapp
+    password: Demo123456789
+    platform: mysql
+    initialization-mode: always
+
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+server:
+  port: 5593
