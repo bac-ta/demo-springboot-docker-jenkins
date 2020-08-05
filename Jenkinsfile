@@ -16,7 +16,7 @@ pipeline {
         }
         stage("Docker Compose Build Enviroment") {
             steps {
-                sh "docker-compose up -d --no-deps --build"
+                sh "docker-compose up -d --build"
             }
         }
     }
