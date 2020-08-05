@@ -18,7 +18,10 @@ services:
     networks:
       - my-network
     healthcheck:
-      test: "exit 0"
+      test: ["CMD", "mysql", "-h", "localhost", "-P", "3306", "-u", "root", "--password=root", "-e", "select 1", "DOCKERDB"]
+      interval: 1s
+      timeout: 3s
+      retries: 30
 
   # App config
   demo-springboot-docker-jenkins-app:
@@ -27,8 +30,6 @@ services:
       dockerfile: Dockerfile
     ports:
       - "5593:8080"
-    expose:
-      - "5593"
     restart: always
     depends_on:
       - mysql_database
@@ -39,8 +40,6 @@ services:
     networks:
       - my-network
     hostname: localhost
-    healthcheck:
-      test: "exit 0"
 
 # Volumes
 volumes:
@@ -49,8 +48,3 @@ volumes:
 # Networks to be created to facilitate communication between containers
 networks:
   my-network:
-    driver: bridge
-    ipam:
-      driver: default
-      config:
-        - subnet: 192.168.0.100/24

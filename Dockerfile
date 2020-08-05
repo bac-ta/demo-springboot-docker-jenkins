@@ -12,5 +12,5 @@ COPY . /app
 RUN mvn -v
 RUN mvn clean install -DskipTests
 ADD ./target/demo-0.0.1-SNAPSHOT.jar /developments/my-app.jar
-ENTRYPOINT ["java","-jar","/developments/my-app.jar"]
 EXPOSE 5593
+ENTRYPOINT ["java","-jar","/developments/my-app.jar"]
