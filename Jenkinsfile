@@ -23,10 +23,4 @@ pipeline {
             }
         }
     }
-    post {
-            always {
-                // Always cleanup after the build.
-                sh 'docker-compose -f ${env.COMPOSE_FILE} down'
-            }
-    }
 }
