@@ -8,23 +8,30 @@ pipeline {
         maven "MAVEN_HOME"
     }
     stages {
-        stage("Docker Compose") {
+        stage("Maven Build Jar File") {
+            steps {
+                git "https://github.com/bac-ta/demo-springboot-docker-jenkins.git"
+                sh "mvn clean install -DskipTests"
+            }
+        }
+        stage("Docker Compose Build Enviroment") {
             steps {
                 sh "docker-compose build"
                 sh "docker-compose up -d"
             }
         }
-        stage("Build And Deploy") {
+        state("Deploy"){
             steps {
-                git "https://github.com/bac-ta/demo-springboot-docker-jenkins.git"
-                sh "mvn clean install spring-boot:run"
+                script {
+                    sh "docker-compose up"
+                }
             }
         }
     }
     post {
             always {
                 // Always cleanup after the build.
-                sh "docker-compose -f ${env.COMPOSE_FILE} down"
+                sh 'docker-compose -f ${env.COMPOSE_FILE} down'
             }
     }
 }
