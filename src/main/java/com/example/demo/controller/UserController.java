@@ -19,11 +19,11 @@ public class UserController {
         this.service = service;
     }
 
-    @GetMapping("/user/get/{id}")
-    public ResponseEntity<User> findUser(@PathVariable("id") int id) {
-        User user = service.findUser(id);
-        return new ResponseEntity<>(user, HttpStatus.OK);
-    }
+//    @GetMapping("/user/get/{id}")
+//    public ResponseEntity<User> findUser(@PathVariable("id") int id) {
+//        User user = service.findUser(id);
+//        return new ResponseEntity<>(user, HttpStatus.OK);
+//    }
 
     @DeleteMapping("/user/delete/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable("id") int id) {
