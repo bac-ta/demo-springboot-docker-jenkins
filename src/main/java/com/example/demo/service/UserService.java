@@ -22,6 +22,7 @@ public class UserService {
         if (!optionalUser.isPresent())
             throw new ResourceNotFoundException("User not found");
         System.out.println("Hello Bac Ta");
+        System.out.println("Hello Bac Ta");
         return optionalUser.get();
     }
 
