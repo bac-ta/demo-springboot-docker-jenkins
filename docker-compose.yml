@@ -41,7 +41,6 @@ services:
       SPRING_DATASOURCE_PASSWORD: Demo123456789
     networks:
       - my-network
-    hostname: localhost
     extra_hosts:
       - localhost:127.0.0.1
 
