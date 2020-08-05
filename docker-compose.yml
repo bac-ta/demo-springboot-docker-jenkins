@@ -17,6 +17,8 @@ services:
       - db-data:/var/lib/mysql
     networks:
       - my-network
+    healthcheck:
+      test: "exit 0"
 
   # App config
   demo-springboot-docker-jenkins-app:
@@ -36,6 +38,9 @@ services:
       SPRING_DATASOURCE_PASSWORD: Demo123456789
     networks:
       - my-network
+    hostname: localhost
+    healthcheck:
+      test: "exit 0"
 
 # Volumes
 volumes:
@@ -44,3 +49,8 @@ volumes:
 # Networks to be created to facilitate communication between containers
 networks:
   my-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.0.100/24
