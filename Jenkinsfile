@@ -20,11 +20,6 @@ pipeline {
                 sh "docker-compose up -d"
             }
         }
-        state("Deploy app") {
-            script {
-                sh "docker-compose up"
-            }
-        }
     }
     post {
             always {
