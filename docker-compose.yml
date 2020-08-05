@@ -24,12 +24,14 @@ services:
       retries: 30
 
   # App config
-  demo-springboot-docker-jenkins-app:
+  my-app-demo:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "5593:8080"
+      - "5593:5593"
+    expose:
+      - "5593"
     restart: always
     depends_on:
       - mysql_database
@@ -40,6 +42,8 @@ services:
     networks:
       - my-network
     hostname: localhost
+    extra_hosts:
+      - localhost:127.0.0.1
 
 # Volumes
 volumes:
