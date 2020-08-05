@@ -19,7 +19,7 @@ public class UserRepositoryTest {
 
     @Test
     public void testWithEmptyUserId() {
-        Optional<User> optionalUser = userRepository.findById(10);
+        Optional<User> optionalUser = userRepository.findById(-1);
         assertThat(optionalUser.isPresent()).isEqualTo(false);
     }
 }
