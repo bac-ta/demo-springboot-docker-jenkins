@@ -17,7 +17,7 @@ pipeline {
         stage("Docker Compose Build Enviroment") {
             steps {
                 sh "docker-compose build"
-                scripts {
+                script {
                     sh "docker-compose up"
                 }
             }
