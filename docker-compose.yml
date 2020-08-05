@@ -29,7 +29,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "5593:5593"
+      - "5593:8080"
     expose:
       - "5593"
     restart: always

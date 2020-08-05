@@ -8,16 +8,15 @@ pipeline {
         maven 'MAVEN_HOME'
     }
     stages {
-        stage('Docker Compose') {
-            steps {
-                sh "docker-compose -f ${env.COMPOSE_FILE} build"
-                sh "docker-compose up -d"
-            }
-        }
         stage('Build') {
             steps {
                 git 'https://github.com/bac-ta/demo-springboot-docker-jenkins.git'
                 sh "mvn clean package install"
+            }
+        }
+        stage('Docker Compose') {
+            steps {
+                sh "docker-compose up --build"
             }
         }
     }
