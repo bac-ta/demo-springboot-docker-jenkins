@@ -23,6 +23,7 @@ public class UserService {
             throw new ResourceNotFoundException("User not found");
         System.out.println("Hello Bac Ta");
         System.out.println("Hello Bac Ta");
+        System.out.println("Hello Bac Ta");
         return optionalUser.get();
     }
 
